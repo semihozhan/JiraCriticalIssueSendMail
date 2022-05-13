@@ -1,0 +1,33 @@
+﻿@using Attlassian.Core.Domain;
+@model List<Attlassian.Core.Domain.IssueModel>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>AssigneeUser</th>
+            <th>CreatedOn</th>
+            <th>Summary</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><a href='@string.Format("https://jira.brighteventure.com/browse/{0}",@item.Value)' target="_blank">@item.Value</a></td>
+            <td>@item.AssigneeUser</td>
+            <td>@item.Created</td>
+            <td>@item.Summary</td>
+            <td>@item.Description</td>
+        </tr>
+    }
+</table>
+
+
+<script>
+setInterval(function() {location.reload();}, 60*60*1000);
+</script>
